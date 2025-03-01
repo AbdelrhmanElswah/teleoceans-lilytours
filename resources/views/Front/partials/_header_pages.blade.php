@@ -249,7 +249,7 @@
                         </div>
                         <ul>
                             <li class="has-child-menu">
-                                <a href=index.html">Home</a>
+                                <a href="index.html">Home</a>
                             </li>
                             <li><a href="about.html">Offers</a></li>
                             <li><a href="about.html">Tours</a></li>
