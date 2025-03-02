@@ -28,8 +28,8 @@
                                             <img src="{{asset('assets/images/icons/pd1.svg')}}" alt="">
                                         </div>
                                         <div class="info">
-                                            <h6>Duration</h6>
-                                            <span>{{$program->duration}}</span>
+                                            <h6 style="font-weight: bold;">Duration</h6>
+                                            <span style="font-weight: bold;">{{$program->duration}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -39,12 +39,12 @@
                                             <img src="{{asset('assets/images/icons/pd2.svg')}}" alt="">
                                         </div>
                                         <div class="info">
-                                            <h6>Tour Type</h6>
-                                            <span>{{$program->type}}</span>
+                                            <h6 style="font-weight: bold;">Tour Type</h6>
+                                            <span style="font-weight: bold;">{{$program->type}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <!-- <div class="col">
                                     <div class="pd-single-info">
                                         <div class="info-icon">
                                             <img src="{{asset('assets/images/icons/pd3.svg')}}" alt="">
@@ -54,15 +54,15 @@
                                             <span>{{$program->run_dates}}</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <div class="pd-single-info">
                                         <div class="info-icon">
                                             <img src="{{asset('assets/images/icons/pd4.svg')}}" alt="">
                                         </div>
                                         <div class="info">
-                                            <h6>Price From</h6>
-                                            <span>{{$program->price}}</span>
+                                            <h6 style="font-weight: bold;">Price From</h6>
+                                            <span style="font-weight: bold;">{{$program->price}}</span>
                                         </div>
                                     </div>
                                 </div>
