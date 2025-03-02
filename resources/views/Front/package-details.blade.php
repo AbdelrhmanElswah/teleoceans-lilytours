@@ -120,7 +120,7 @@
                                     <button class="nav-link" id="pills-package3" data-bs-toggle="pill" data-bs-target="#pill-body3" type="button" role="tab" aria-controls="pill-body3" aria-selected="false"><i  style="margin-right: 2px"  class="bi bi-images"></i>Accommodation</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-package5" data-bs-toggle="pill" data-bs-target="#pill-body5" type="button" role="tab" aria-controls="pill-body5" aria-selected="false"><i  style="margin-right: 2px"  class="bi bi-plus"></i>Addons</button>
+                                    <button class="nav-link" id="pills-package5" data-bs-toggle="pill" data-bs-target="#pill-body5" type="button" role="tab" aria-controls="pill-body5" aria-selected="false"><i  style="margin-right: 2px"  class="bi bi-plus"></i>Optionals</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-package4" data-bs-toggle="pill" data-bs-target="#pill-body4" type="button" role="tab" aria-controls="pill-body4" aria-selected="false"><i style="margin-right: 2px" class="fa fa-money"></i> Prices</button>
@@ -216,7 +216,7 @@
                                                             <img style="height: 300px" src="{{asset('images/addons/'.$addon->image)}}" alt="">
                                                         </a>
                                                         <div class="blog-lavel">
-                                                            <a >{{$addon->title}} , {{$addon->price}}</a>
+                                                        <a>{{$addon->title}}, {{$addon->price}}$</a>
                                                         </div>
                                                     </div>
                                                     <div class="blog-content">
