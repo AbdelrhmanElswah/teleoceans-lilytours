@@ -27,18 +27,27 @@
                     <div class="contact-info">
                         <h3>Contact Info.</h3>
                         <ul>
+                        <li>
+    <h6>Let’s Talk</h6>
+    <ul>
+        <li><i class="bi bi-telephone-x"></i> <a href="tel:+201111130723">+201111130723</a></li>
+        <li><i class="bi bi-envelope-open"></i> <a href="mailto:Info@lillytour.com">Info@lillytour.com</a></li>
+    </ul>
+</li>
+<li>
+    <h6>Location.</h6>
+    <p style="font-weight: bold;">139 C Menes St., Hadayek Al Ahram, Al Haram, Giza</p>
+</li>
                             <li>
-                                <h6>Let’s Talk</h6>
-                                {!!isset($contact->call) ? $contact->call : ''!!}
-                            </li>
-                            <li>
-                                <h6>Loacation.</h6>
-                                {!!isset($contact->address) ? $contact->address : ''!!}
-                            </li>
-                            <li>
-                                <h6>Visit Us.</h6>
-                                  {!!isset($contact->links) ? $contact->links : ''!!}
-                            </li>
+    <h6>Visit Us.</h6>
+    <ul>
+    <li><a href="https://www.facebook.com/profile.php?id=100088834734536&sk=about" target="_blank">Facebook</a></li>
+    <li><a href="https://www.instagram.com/lillytours.egypt/profilecard/?igsh=MTJ1ejVoMG9xYmJ5" target="_blank">Instagram</a></li>
+    <li><a href="https://x.com/LillyTour" target="_blank">Twitter</a></li>
+    <li><a href="https://www.youtube.com/@LillyTour" target="_blank">YouTube</a></li>
+    <li><a href="https://www.google.com/maps?daddr=29.9808410,31.1436830&saddr=30.0089421,31.3128896&dirflg=d&geocode=FW7myQEd-svdAQ%3D%3D;Fal4yQEdAzfbAQ%3D%3D&lucs=,94242484,94224825,94227247,94227248,47071704,47069508,94218641,94203019,47084304,94208458,94208447&g_ep=CAISDTYuMTQwLjAuOTEzNzAYACC6twsqYyw5NDI0MjQ4NCw5NDIyNDgyNSw5NDIyNzI0Nyw5NDIyNzI0OCw0NzA3MTcwNCw0NzA2OTUwOCw5NDIxODY0MSw5NDIwMzAxOSw0NzA4NDMwNCw5NDIwODQ1OCw5NDIwODQ0N0ICRUc%3D&g_st=iw" target="_blank">Location</a></li>
+</ul>
+</li>
                         </ul>
                     </div>
                 </div>
