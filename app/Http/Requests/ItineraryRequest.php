@@ -24,7 +24,7 @@ class ItineraryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:4|max:100|string',
+            'title' => 'required|min:4|max:255|string',
             'description' => 'string|min:6',
         ];
     }

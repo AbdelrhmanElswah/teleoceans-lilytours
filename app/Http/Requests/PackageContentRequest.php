@@ -24,8 +24,8 @@ class PackageContentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4|max:100|string',
-            'type' => 'required|min:4|max:50|string',
+            'name' => 'required|min:4|max:255|string',
+            'type' => 'required|min:4|max:255|string',
         ];
     }
 }

@@ -25,7 +25,7 @@ class ProgramRequest extends FormRequest
     {
         return [
             'sub_category_id' => 'required|numeric|exists:sub_categories,id',
-            'name' => 'required|min:2|max:20|string',
+            'name' => 'required|min:2|max:255|string',
             'price' => 'required|string',
             'type' => 'max:100',
             'duration' => 'max:100',
