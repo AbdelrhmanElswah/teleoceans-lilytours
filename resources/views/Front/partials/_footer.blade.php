@@ -46,8 +46,14 @@
             <div class="footer-contact-wrapper mt-4">
                 <h5>Contact Us:</h5>
                 <ul class="footer-contact-list">
-                    <li><i class="bi bi-telephone-x"></i> <a href="tel:{{isset($contact->number) ? $contact->number : ''}}">{{isset($contact->number) ? $contact->number : ''}}</a></li>
-                    <li><i class="bi bi-envelope-open"></i> <a href="mailto:{{isset($contact->email) ? $contact->email : ''}}">{{isset($contact->email) ? $contact->email : ''}}</a></li>
+                <li>
+    <i class="bi bi-telephone-x"></i>
+    <a href="tel:+201111130723">+201111130723</a>
+</li>
+<li>
+    <i class="bi bi-envelope-open"></i>
+    <a href="mailto:Info@lillytour.com">Info@lillytour.com</a>
+</li>
                     <li><i class="bi bi-geo-alt"></i> <a href="https://maps.google.com/?q={{isset($contact->address) ? urlencode($contact->address) : ''}}" target="_blank">{{isset($contact->address) ? $contact->address : ''}}</a></li>
                 </ul>
             </div>
