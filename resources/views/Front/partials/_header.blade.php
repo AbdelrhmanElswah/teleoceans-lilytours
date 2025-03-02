@@ -192,7 +192,8 @@
                                 <ul class="sub-menu">
                                     <li><a href="{{route('home','#about')}}">About Us</a></li>
                                     <li><a href="{{route('contact')}}">Contact Us</a></li>
-                                    <li><a href="{{route('faq')}}">FAQ</a></li>
+                                    <li><a href="{{route('blog')}}">Blogs</a></li>
+                                    <li><a href="">Terms & Conditions</a></li>
                                 </ul>
                             </li>
                             <li></li>

@@ -41,7 +41,8 @@ Route::post('/tailor-made/store', [\App\Http\Controllers\TailorMadeController::c
 
 
 
-Route::get('/FAQ', [\App\Http\Controllers\HomePageController::class,'faqsPage'])->name('faq');
+//Route::get('/FAQ', [\App\Http\Controllers\HomePageController::class,'faqsPage'])->name('faq');
+Route::get('/blogs', [\App\Http\Controllers\HomePageController::class,'blog'])->name('blog');
 
 Route::get('/tailor-made', [\App\Http\Controllers\TailorMadeController::class,'index'])->name('tailor');
 

@@ -28,7 +28,7 @@
                         <ul class="footer-links">
                             <li><a href="{{route('home')}}#about">About Us</a></li>
                             <li><a href="{{route('contact')}}">Contact Us</a></li>
-                            <li><a href="{{route('faq')}}">FAQ</a></li>
+                            <li><a href="">FAQ</a></li>
                         </ul>
                     </div>
                 </div>
