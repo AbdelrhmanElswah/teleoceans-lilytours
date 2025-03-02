@@ -11,4 +11,4 @@
 
 <script src="{{asset('assets/js/main.js')}}"></script>
 <script src="{{asset('assets/js/custom-swiper.js')}}"></script>
-@yield('script');
+@yield('script')

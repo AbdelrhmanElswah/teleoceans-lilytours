@@ -15,4 +15,4 @@
 <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
-@yield('css');
+@yield('css')

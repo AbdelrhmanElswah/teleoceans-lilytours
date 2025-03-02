@@ -27,7 +27,14 @@
                 <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-xs-12 align-items-center d-xl-flex d-lg-block">
                     <div class="nav-logo d-flex justify-content-between align-items-center">
                         <a href="/"><img src="{{asset('assets/images/111.1.png')}}" style=" height: 90px" alt="logo"></a>
-                       
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="nav-right d-xl-none">
+                                <!-- <ul class="nav-actions">
+                                    <li class="category-toggle">
+                                        <i class="bx bx-category"></i>
+                                    </li>
+                                </ul> -->
+                            </div>
                             <div class="mobile-menu d-flex ">
                                 <a href="javascript:void(0)" class="hamburger d-block d-xl-none">
                                     <span class="h-top"></span>
