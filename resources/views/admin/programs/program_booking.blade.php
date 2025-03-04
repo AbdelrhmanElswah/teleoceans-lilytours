@@ -14,7 +14,7 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
     <section class="content">
@@ -29,7 +29,6 @@
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
                                            placeholder="Search">
-
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
@@ -47,7 +46,9 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Number</th>
-                                    <th>Type</th>
+                                    <th>Program Name</th>
+                                    <th>Promo Code</th>
+                                    <th>Add-ons</th>
                                     <th>Date</th>
                                     <th>Adult</th>
                                     <th>Child</th>
@@ -62,11 +63,13 @@
                                         <td>{{$Booking->name}}</td>
                                         <td>{{$Booking->email}}</td>
                                         <td>{{$Booking->number}}</td>
-                                        <td>{{$Booking->type}}</td>
+                                        <td>{{$Booking->program->name ?? ''}}</td> <!-- عرض اسم البرنامج -->
+                                        <td>{{$Booking->promo_code ?? ''}}</td>
+                                        <td>{{$Booking->addons ?? ''}}</td>
                                         <td>{{$Booking->date}}</td>
                                         <td>{{$Booking->adult}}</td>
                                         <td>{{$Booking->child}}</td>
-                                        <td>{{$Booking->message}}</td>
+                                        <td>{{$Booking->message ?? ''}}</td>
                                         <td class="text-left py-0 align-middle">
                                             <div class="btn-group btn-group-sm">
                                                 <a title="delete {{$Booking->name}}" data-toggle="modal"
@@ -75,7 +78,6 @@
                                                         class="fas fa-trash"></i></a>
                                             </div>
                                         </td>
-
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -90,12 +92,11 @@
         </div>
         <!-- /.container-fluid -->
 
-
         <div class="modal fade" id="booking_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header ">
+                    <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Delete Booking</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -104,8 +105,7 @@
                     <form method="post" id="booking-action" action=" ">
                         @csrf
                         {{method_field('delete')}}
-                        <div class="modal-body ">
-
+                        <div class="modal-body">
                             Are you sure about Delete?
                         </div>
                         <div class="modal-footer">
@@ -113,7 +113,6 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

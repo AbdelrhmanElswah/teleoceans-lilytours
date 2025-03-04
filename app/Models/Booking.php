@@ -9,10 +9,12 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'number', 'type', 'email', 'date', 'adult', 'child', 'message', 'program_id'];
+    protected $fillable = ['name', 'number', 'email', 'date', 'adult', 'child', 'message', 'program_id','promo_code','addons'];
 
+    
     public function program()
-    {
-        return $this->belongsTo(Program::class);
-    }
+{
+    return $this->belongsTo(Program::class, 'program_id');
+}
+
 }

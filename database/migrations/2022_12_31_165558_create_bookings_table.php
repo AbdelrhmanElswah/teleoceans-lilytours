@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('number');
-            $table->string('type');
+            $table->string('promo_code')->nullable();
+            $table->string('addons');
             $table->string('adult');
             $table->string('child')->nullable();
             $table->string('date');

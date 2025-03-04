@@ -118,6 +118,24 @@
 
 
                 <li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-edit"></i>
+        <p>
+            Booking
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview" style="display: none;">
+        <li class="nav-item">
+            <a href="{{ route('admin.bookings.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Show All Bookings</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
+                <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>

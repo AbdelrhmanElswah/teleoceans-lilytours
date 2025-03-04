@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminControllers\DashboardController;
 use App\Http\Controllers\AdminControllers\FAQsController;
 use App\Http\Controllers\AdminControllers\ItineraryController;
 use App\Http\Controllers\AdminControllers\MediaController;
+use App\Http\Controllers\AdminControllers\BookingController;
 use App\Http\Controllers\AdminControllers\MessagesController;
 use App\Http\Controllers\AdminControllers\PackageContentController;
 use App\Http\Controllers\AdminControllers\ProgramsController;
@@ -29,6 +30,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
+    Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
+});
 
 Route::get('/', [\App\Http\Controllers\HomePageController::class,'index'])->name('home');
 

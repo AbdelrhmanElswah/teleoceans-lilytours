@@ -21,17 +21,21 @@ class BookingRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
-    {
-        return [
-            'name' => 'required|min:4|max:50|string',
-            'email' => 'required|email|min:6|max:120',
-            'number' => 'required|min:6|max:15',
-            'type' => 'required|string|max:15',
-            'adult' => 'required|string|max:15',
-            'child' => 'string|max:15',
-            'date' => 'required|string|max:15',
-            'message' => 'string|min:6|max:200',
-        ];
+   
+        public function rules()
+        {
+            return [
+                'name' => 'required|min:4|max:50|string',
+                'email' => 'required|email|min:6|max:120',
+                'number' => 'required|min:6|max:20',
+                'adult' => 'required|integer|min:1',
+                'child' => 'nullable|integer|min:0',
+                'date' => 'required|date',
+                'message' => 'nullable|string|min:6|max:200',
+                'promo_code' => 'nullable|string|max:20',
+                'addons' => 'required|string|min:1|max:200',
+            ];
+        
+        
     }
 }

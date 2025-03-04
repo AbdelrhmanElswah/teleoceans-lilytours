@@ -244,77 +244,74 @@
                             <div class="widget-title text-center d-flex justify-content-between">
                                 <h4>Book This Tour</h4>
                                 </div>
-                            <div class="widget-body">
-                                <form action="{{route('details.booking')}}" method="post" id="booking-form">
-                                    @csrf
-                                    @if($errors->any())
-                                        <div class="alert alert-danger" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                            @foreach($errors->all() as $error)
-                                                {{ $error }}<br/>
-                                            @endforeach
-                                        </div>
-                                    @endif
+                                <div class="widget-body">
+    <form action="{{route('details.booking')}}" method="post" id="booking-form">
+        @csrf
+        @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @foreach($errors->all() as $error)
+                    {{ $error }}<br/>
+                @endforeach
+            </div>
+        @endif
 
-                                    @if (\Session::has('success'))
-                                        <div class="alert alert-success">
-                                            <ul>
-                                                <li>{!! \Session::get('success') !!}</li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    <div class="booking-form-wrapper">
-                                        <div class="custom-input-group">
-                                            <input type="text" name="name" placeholder="Your Full Name" id="name">
-                                        </div>
-                                        <div class="custom-input-group">
-                                            <input type="email" name="email" placeholder="Your Email" id="email">
-                                            <input type="hidden" name="program_id" value="{{$program->id}}">
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! Session::get('success') !!}</li>
+                </ul>
+            </div>
+        @endif
+        
+        <div class="booking-form-wrapper">
+            <div class="custom-input-group">
+                <input type="text" name="name" placeholder="Your Full Name" id="name">
+            </div>
+            <div class="custom-input-group">
+                <input type="email" name="email" placeholder="Your Email" id="email">
+                <input type="hidden" name="program_id" value="{{$program->id}}">
+            </div>
+            <div class="custom-input-group">
+                <input type="tel" name="number" placeholder="Phone" id="phone">
+            </div>
+            <div class="custom-input-group">
+                <input type="text" name="promo_code" placeholder="Promo Code (if any)" id="promo_code">
+            </div>
+            <div class="custom-input-group">
+                <textarea cols="20" rows="3" name="addons" placeholder="Enter Add-ons "></textarea>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="custom-input-group">
+                        <input type="number" name="adult" placeholder="Adult" id="adult">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="custom-input-group">
+                        <input type="number" name="child" placeholder="Child" id="child">
+                    </div>
+                </div>
+            </div>
+            <div class="custom-input-group">
+                <i class="bi bi-calendar3"></i>
+                <input placeholder="Select your date" type="text" name="date" id="datepicker2" value="" class="calendar">
+            </div>
+            <div class="custom-input-group">
+                <textarea cols="20" rows="7" name="message" placeholder="Your message"></textarea>
+            </div>
+            <div class="custom-input-group">
+                <div class="submite-btn">
+                    <button type="submit">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
-                                        </div>
-
-                                        <div class="custom-input-group">
-                                            <input type="tel" name="number" placeholder="Phone" id="phone">
-                                        </div>
-                                        <div class="custom-input-group">
-                                            <i class="bi bi-chevron-down"></i>
-                                            <select name="type" id="ticket_type">
-                                                <option selected>Holiday Type</option>
-                                                <option value="Budget">Budget</option>
-                                                <option value="Classical">Classical</option>
-                                                <option value="Luxury">Luxury</option>
-                                                <option value="Adventure">Adventure</option>
-                                            </select>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="custom-input-group">
-                                                    <input type="number" name="adult" placeholder="Adult" id="adult">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="custom-input-group">
-                                                    <input type="number" name="child" placeholder="Child" id="child">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="custom-input-group">
-                                            <i class="bi bi-calendar3"></i>
-                                            <input placeholder="Select your date" type="text" name="date" id="datepicker2" value="" class="calendar">
-                                        </div>
-                                        <div class="custom-input-group">
-                                            <textarea cols="20" rows="7" name="message" placeholder="Your message"></textarea>
-                                        </div>
-                                        <div class="custom-input-group">
-                                            <div class="submite-btn">
-                                                <button type="submit">Book Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                
                         </aside>
                         <aside class="package-widget-style-2 widget-recent-package-entries mt-30">
                             <div class="widget-title text-center">
@@ -333,13 +330,15 @@
                                             <h6><a >{{$program_suggest->name}}</a></h6>
                                             <div class="price">
                                                 <span>From</span>
-                                                <h6>{{$program_suggest->price}} <span>Per Person</span></h6>
+                                                <h6>{{$program_suggest->price}}$<span>Per Person</span></h6>
                                             </div>
                                         </div>
                                     </li>
                                     @endforeach
                                 </ul>
                             </div>
+
+
                         </aside>
 
                     </div>
@@ -347,7 +346,12 @@
             </div>
         </div>
     </div>
+
+
+
+
 <script>
+   
     document.addEventListener('DOMContentLoaded', function () {
         new Swiper('.swiper', {
             loop: true,

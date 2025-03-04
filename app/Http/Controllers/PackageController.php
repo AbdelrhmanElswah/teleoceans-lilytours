@@ -8,6 +8,8 @@ use App\Models\Media;
 use App\Models\Program;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PackageController extends Controller
 {
@@ -29,7 +31,21 @@ class PackageController extends Controller
 
     public function storeBooking(BookingRequest $request)
     {
-       Booking::create($request->all());
-       return redirect()->back()->with('success', 'Your message send successfully , We will call you soon');
+        // 
+        if ($request->promo_code) {
+            $promoExists = DB::table('promo_referrals')
+                            ->where('code', $request->promo_code)
+                            ->exists();
+    
+            if (!$promoExists) {
+                return redirect()->back()->withErrors(['promo_code' => 'Invalid promo code.']);
+            }
+        }
+    
+        
+        Booking::create($request->all());
+    
+        return redirect()->back()->with('success', 'Your booking has been submitted successfully! We will contact you soon.');
     }
+    
 }
