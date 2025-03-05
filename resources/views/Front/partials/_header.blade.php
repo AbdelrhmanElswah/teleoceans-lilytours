@@ -82,7 +82,7 @@
                                     <li><a href="{{route('home','#about')}}">About Us</a></li>
                                     <li><a href="{{route('contact')}}">Contact Us</a></li>
                                     <li><a href="{{route('blog')}}">Blogs</a></li>
-                                    <li><a href="">Terms & Conditions</a></li>
+                                    <li><a href="{{route('terms')}}">Terms & Conditions</a></li>
                                 </ul>
                             </li>
                             <li></li>

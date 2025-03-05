@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminControllers\PromoReferralController;
 use App\Http\Controllers\AdminControllers\SliderController;
 use App\Http\Controllers\AdminControllers\SubCategoryController;
 use App\Http\Controllers\AdminControllers\TailorMadeController;
+use App\Http\Controllers\AdminControllers\TermsConditionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/terms-and-conditions', [\App\Http\Controllers\TermsConditionController::class, 'index'])->name('terms');
+
+// Simplified Resource Route
+Route::resource('terms', TermsConditionController::class);
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');

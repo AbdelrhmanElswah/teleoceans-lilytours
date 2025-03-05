@@ -353,33 +353,39 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            FAQs
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                            <a href="{{route('faqs.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New FAQs</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{route('faqs.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Show All FAQs</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
+              
 
                 <li class="nav-item">
+                <li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-file-contract"></i> <!-- أيقونة جديدة -->
+        <p>
+            Terms & Conditions
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview" style="display: none;">
+        <!-- إضافة Terms & Conditions -->
+        <li class="nav-item">
+            <a href="{{ route('terms.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Terms & Conditions</p>
+            </a>
+        </li>
+        <!-- عرض Terms & Conditions -->
+        <li class="nav-item">
+            <a href="{{ route('terms.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Show Terms & Conditions</p>
+            </a>
+        </li>
+    </ul>
+</li>
+                     
+
+
+               <li class="nav-item">
+                
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -411,3 +417,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+ 

@@ -70,8 +70,8 @@
                 <div class="col-lg-6 col-md-12 order-1 order-lg-2 mb-3 mb-lg-0">
                     <div class="policy-links">
                         <ul class="policy-list justify-content-center justify-content-lg-end">
-                            <li><a href="">Terms & Condition</a></li>
-                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+                            <li><a href="{{route('terms')}}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
