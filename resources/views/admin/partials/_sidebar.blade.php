@@ -1,9 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('/dashboard')}}" class="brand-link">
-        <img src="{{asset('assets/images/3-1.png')}}" alt="Lilly Tours"
-             class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="{{ url('/dashboard') }}" class="brand-link">
+        <img src="{{ asset('assets/images/3-1.png') }}" alt="Lilly Tours" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Lilly Tours</span>
     </a>
 
@@ -12,10 +11,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-
+                <!-- يمكنك إضافة صورة المستخدم هنا إذا كنت بحاجة إليها -->
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->name}}</a>
+                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
@@ -34,10 +33,9 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                <!-- Sliders Section (Added Here) -->
+                <!-- Sliders Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Sliders
@@ -46,13 +44,13 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('sliders.create')}}" class="nav-link">
+                            <a href="{{ route('sliders.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Slider</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('sliders.index')}}" class="nav-link">
+                            <a href="{{ route('sliders.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Sliders</p>
                             </a>
@@ -60,10 +58,9 @@
                     </ul>
                 </li>
 
-
-
+                <!-- Categories Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Categories
@@ -72,26 +69,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('category.create')}}" class="nav-link">
+                            <a href="{{ route('category.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Category</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('category.index')}}" class="nav-link">
+                            <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Categories</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-
-
+                <!-- Sub Categories Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Sub Categories
@@ -100,43 +94,42 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('subcategory.create')}}" class="nav-link">
+                            <a href="{{ route('subcategory.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add New sub Category</p>
+                                <p>Add New Sub Category</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('subcategory.index')}}" class="nav-link">
+                            <a href="{{ route('subcategory.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Sub Categories</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-
+                <!-- Booking Section -->
                 <li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-edit"></i>
-        <p>
-            Booking
-            <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview" style="display: none;">
-        <li class="nav-item">
-            <a href="{{ route('admin.bookings.index') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Show All Bookings</p>
-            </a>
-        </li>
-    </ul>
-</li>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Booking
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.bookings.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show All Bookings</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
+                <!-- Programs Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Programs
@@ -145,21 +138,19 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('programs.create')}}" class="nav-link">
+                            <a href="{{ route('programs.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Program</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('programs.index')}}" class="nav-link">
+                            <a href="{{ route('programs.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Programs</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('media.program')}}" class="nav-link">
+                            <a href="{{ route('media.program') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Media</p>
                             </a>
@@ -167,9 +158,9 @@
                     </ul>
                 </li>
 
-
+                <!-- Package Contents Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Package Contents
@@ -178,30 +169,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('package.content.create')}}" class="nav-link">
+                            <a href="{{ route('package.content.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Package Content</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('package.content.index')}}" class="nav-link">
+                            <a href="{{ route('package.content.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show Package Contents</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-
-
-
-
-
-
+                <!-- Itineraries Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Itineraries
@@ -210,31 +194,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('itineraries.create')}}" class="nav-link">
+                            <a href="{{ route('itineraries.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add New itineraries</p>
+                                <p>Add New Itinerary</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('itineraries.index')}}" class="nav-link">
+                            <a href="{{ route('itineraries.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Show All itineraries</p>
+                                <p>Show All Itineraries</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-
-
-
-
-
-
-
+                <!-- Accommodations Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Accommodations
@@ -243,28 +219,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('accommodations.create')}}" class="nav-link">
+                            <a href="{{ route('accommodations.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Hotel/Cruises</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('accommodations.index')}}" class="nav-link">
+                            <a href="{{ route('accommodations.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Hotel/Cruises</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-
-
-
-
+                <!-- Addons Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Addons
@@ -273,24 +244,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('addons.create')}}" class="nav-link">
+                            <a href="{{ route('addons.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Addon</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('addons.index')}}" class="nav-link">
+                            <a href="{{ route('addons.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Addons</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
+                <!-- Tailor Made Requests Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Tailor Made Requests
@@ -298,18 +268,18 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
-
                         <li class="nav-item">
-                            <a href="{{route('tailors.index')}}" class="nav-link">
+                            <a href="{{ route('tailors.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Requests</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
+
+                <!-- Blogs Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Blogs
@@ -318,24 +288,23 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="{{route('blogs.create')}}" class="nav-link">
+                            <a href="{{ route('blogs.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Post</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('blogs.index')}}" class="nav-link">
+                            <a href="{{ route('blogs.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show All Posts</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
+                <!-- Promo & Referral Codes Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Promo & Referral Codes
@@ -343,50 +312,62 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
-
                         <li class="nav-item">
-                            <a href="{{route('promo.index')}}" class="nav-link">
+                            <a href="{{ route('promo.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Show All Promo&Referral</p>
+                                <p>Show All Promo & Referral</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
-              
 
+                <!-- Terms & Conditions Section -->
                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file-contract"></i>
+                        <p>
+                            Terms & Conditions
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('terms.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Terms & Conditions</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('terms.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show Terms & Conditions</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Subscribers Section -->
                 <li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-file-contract"></i> <!-- أيقونة جديدة -->
-        <p>
-            Terms & Conditions
-            <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview" style="display: none;">
-        <!-- إضافة Terms & Conditions -->
-        <li class="nav-item">
-            <a href="{{ route('terms.create') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Add Terms & Conditions</p>
-            </a>
-        </li>
-        <!-- عرض Terms & Conditions -->
-        <li class="nav-item">
-            <a href="{{ route('terms.index') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Show Terms & Conditions</p>
-            </a>
-        </li>
-    </ul>
-</li>
-                     
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Subscribers
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('subscribers.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Show Subscribers</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-
-               <li class="nav-item">
-                
-                    <a href="" class="nav-link">
+                <!-- Contacts Section -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Contacts
@@ -394,21 +375,18 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
-
                         <li class="nav-item">
-                            <a href="{{route('contacts.index')}}" class="nav-link">
+                            <a href="{{ route('contacts.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show Contacts</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="{{route('messages.index')}}" class="nav-link">
+                            <a href="{{ route('messages.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Show Messages</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
             </ul>
@@ -417,4 +395,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
- 

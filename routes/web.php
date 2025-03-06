@@ -32,7 +32,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+use App\Http\Controllers\SubscriberController;
+Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 Route::get('/terms-and-conditions', [\App\Http\Controllers\TermsConditionController::class, 'index'])->name('terms');
 
 // Simplified Resource Route
