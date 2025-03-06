@@ -9,7 +9,8 @@ use App\Models\Program;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingNotification;
 
 class PackageController extends Controller
 {
@@ -31,7 +32,6 @@ class PackageController extends Controller
 
     public function storeBooking(BookingRequest $request)
     {
-        // 
         if ($request->promo_code) {
             $promoExists = DB::table('promo_referrals')
                             ->where('code', $request->promo_code)
@@ -42,10 +42,12 @@ class PackageController extends Controller
             }
         }
     
-        
-        Booking::create($request->all());
+        // Create the booking
+        $booking = Booking::create($request->all());
+    
+        // Send email to admin
+        Mail::to('Info@lillytour.com')->send(new BookingNotification($booking));
     
         return redirect()->back()->with('success', 'Your booking has been submitted successfully! We will contact you soon.');
     }
-    
 }

@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="info">
                                             <h6 style="font-weight: bold;">Price From</h6>
-                                            <span style="font-weight: bold;">{{$program->price}}</span>
+                                            <span style="font-weight: bold;">{{$program->price}}$</span>
                                         </div>
                                     </div>
                                 </div>

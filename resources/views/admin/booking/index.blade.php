@@ -64,8 +64,8 @@
                                         <td>{{ $booking->name }}</td>
                                         <td>{{ $booking->email }}</td>
                                         <td>{{ $booking->number }}</td>
-                                        <td>{{ $booking->program->name ?? 'N/A' }}</td>
-                                        <td>{{ $booking->promo_code ?? 'N/A' }}</td>
+                                        <td>{{ $booking->program->name ?? '' }}</td>
+                                        <td>{{ $booking->promo_code ?? '' }}</td>
                                         <td>{{ $booking->addons ?? 'None' }}</td>
                                         <td>{{ $booking->date }}</td>
                                         <td>{{ $booking->adult }}</td>
