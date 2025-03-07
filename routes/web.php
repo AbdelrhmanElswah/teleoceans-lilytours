@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminControllers\SliderController;
 use App\Http\Controllers\AdminControllers\SubCategoryController;
 use App\Http\Controllers\AdminControllers\TailorMadeController;
 use App\Http\Controllers\AdminControllers\TermsConditionController;
+use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,42 +33,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\SubscriberController;
-Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
-Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
+// Public Routes
+Route::get('/', [\App\Http\Controllers\HomePageController::class, 'index'])->name('home');
+Route::get('/packages/{id}', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
+Route::get('/details/{id}', [\App\Http\Controllers\PackageController::class, 'details'])->name('details');
+Route::post('/booking', [\App\Http\Controllers\PackageController::class, 'storeBooking'])->name('details.booking');
+Route::post('/tailor-made/store', [\App\Http\Controllers\TailorMadeController::class, 'store'])->name('tailormade.store');
+Route::get('/blogs', [\App\Http\Controllers\HomePageController::class, 'blog'])->name('blog');
+Route::get('/tailor-made', [\App\Http\Controllers\TailorMadeController::class, 'index'])->name('tailor');
+Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact-us/message', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact-us.message');
 Route::get('/terms-and-conditions', [\App\Http\Controllers\TermsConditionController::class, 'index'])->name('terms');
 
-// Simplified Resource Route
-Route::resource('terms', TermsConditionController::class);
+// Subscriber Routes
+Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
+
+// Admin Routes (Protected by Auth Middleware)
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
 });
 
-Route::get('/', [\App\Http\Controllers\HomePageController::class,'index'])->name('home');
-
-Route::get('/packages/{id}', [\App\Http\Controllers\PackageController::class,'index'])->name('packages');
-
-Route::get('/details/{id}', [\App\Http\Controllers\PackageController::class,'details'])->name('details');
-
-Route::post('/booking', [\App\Http\Controllers\PackageController::class,'storeBooking'])->name('details.booking');
-Route::post('/tailor-made/store', [\App\Http\Controllers\TailorMadeController::class,'store'])->name('tailromade.store');
-
-
-
-//Route::get('/FAQ', [\App\Http\Controllers\HomePageController::class,'faqsPage'])->name('faq');
-Route::get('/blogs', [\App\Http\Controllers\HomePageController::class,'blog'])->name('blog');
-
-Route::get('/tailor-made', [\App\Http\Controllers\TailorMadeController::class,'index'])->name('tailor');
-
-
-
-Route::get('/contact-us', [\App\Http\Controllers\ContactController::class,'index'])->name('contact');
-Route::post('/contact-us/message', [\App\Http\Controllers\ContactController::class,'store'])->name('contact-us.message');
-
+// Dashboard Routes (Protected by Auth Middleware)
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index']);
 
+    // Category Routes
     Route::controller(CategoryController::class)->prefix('category')->group(function () {
         Route::get('/', 'index')->name('category.index');
         Route::post('/store', 'store')->name('category.store');
@@ -77,6 +69,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('category.destroy');
     });
 
+    // SubCategory Routes
     Route::controller(SubCategoryController::class)->prefix('subcategory')->group(function () {
         Route::get('/', 'index')->name('subcategory.index');
         Route::post('/store', 'store')->name('subcategory.store');
@@ -86,6 +79,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('subcategory.destroy');
     });
 
+    // PackageContent Routes
     Route::controller(PackageContentController::class)->prefix('PackageContent')->group(function () {
         Route::get('/', 'index')->name('package.content.index');
         Route::post('/store', 'store')->name('package.content.store');
@@ -95,6 +89,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('package.content.destroy');
     });
 
+    // Itinerary Routes
     Route::controller(ItineraryController::class)->prefix('itineraries')->group(function () {
         Route::get('/', 'index')->name('itineraries.index');
         Route::post('/store', 'store')->name('itineraries.store');
@@ -104,6 +99,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('itineraries.destroy');
     });
 
+    // Accommodation Routes
     Route::controller(AccommodationController::class)->prefix('accommodations')->group(function () {
         Route::get('/', 'index')->name('accommodations.index');
         Route::post('/store', 'store')->name('accommodations.store');
@@ -113,6 +109,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('accommodations.destroy');
     });
 
+    // Addons Routes
     Route::controller(AddonsController::class)->prefix('addons')->group(function () {
         Route::get('/', 'index')->name('addons.index');
         Route::post('/store', 'store')->name('addons.store');
@@ -122,6 +119,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('addons.destroy');
     });
 
+    // Programs Routes
     Route::controller(ProgramsController::class)->prefix('programs')->group(function () {
         Route::get('/', 'index')->name('programs.index');
         Route::post('/store', 'store')->name('programs.store');
@@ -134,6 +132,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('programs.destroy');
     });
 
+    // Blog Routes
     Route::controller(BlogController::class)->prefix('blogs')->group(function () {
         Route::get('/', 'index')->name('blogs.index');
         Route::post('/store', 'store')->name('blogs.store');
@@ -143,12 +142,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('blogs.destroy');
     });
 
+    // Media Routes
     Route::controller(MediaController::class)->prefix('media')->group(function () {
         Route::get('/program', 'indexProgram')->name('media.program');
         Route::post('/store', 'storeProgramMedia')->name('media.program.store');
         Route::delete('/destroy/{id}', 'destroy')->name('media.destroy');
     });
 
+    // FAQs Routes
     Route::controller(FAQsController::class)->prefix('faqs')->group(function () {
         Route::get('/', 'index')->name('faqs.index');
         Route::post('/store', 'store')->name('faqs.store');
@@ -158,30 +159,34 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::delete('/destroy/{id}', 'destroy')->name('faqs.destroy');
     });
 
+    // Promo & Referral Routes
     Route::controller(PromoReferralController::class)->prefix('promo_referral')->group(function () {
         Route::get('/', 'index')->name('promo.index');
         Route::post('/store', 'store')->name('promo.store');
         Route::delete('/destroy/{id}', 'destroy')->name('promo.destroy');
     });
 
+    // Messages Routes
     Route::controller(MessagesController::class)->prefix('messages')->group(function () {
         Route::get('/', 'index')->name('messages.index');
         Route::delete('/destroy/{id}', 'destroy')->name('messages.destroy');
     });
 
-
+    // Tailor-Made Requests Routes
     Route::controller(TailorMadeController::class)->prefix('tailor-made-requests')->group(function () {
         Route::get('/', 'index')->name('tailors.index');
         Route::get('/{id}', 'show')->name('tailors.show');
         Route::delete('/destroy/{id}', 'destroy')->name('tailors.destroy');
     });
 
+    // Contact Routes
     Route::controller(ContactContoller::class)->prefix('contacts')->group(function () {
         Route::get('/', 'index')->name('contacts.index');
         Route::post('/update/{id}', 'update')->name('contacts.update');
         Route::get('/edit/{id}', 'edit')->name('contacts.edit');
     });
 
+    // Slider Routes
     Route::controller(SliderController::class)->prefix('sliders')->group(function () {
         Route::get('/', 'index')->name('sliders.index');        // List all sliders
         Route::get('/create', 'create')->name('sliders.create'); // Show the form to create a new slider
@@ -192,4 +197,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     });
 });
 
+// Authentication Routes
 Auth::routes();

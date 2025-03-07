@@ -100,7 +100,7 @@
                             <div class="p-card-bottom">
                                 <div class="p-card-info">
                                     <span>From</span>
-                                    <h6>{{$program->price}} <span>Per Person</span></h6>
+                                    <h6>{{$program->price}}$ <span>Per Person</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="p-card-info">
                                                 <span>From</span>
-                                                <h6>{{$new->price}} <span>Per Person</span></h6>
+                                                <h6>{{$new->price}}$ <span>Per Person</span></h6>
                                             </div>
                                         </div>
                                     </div>
