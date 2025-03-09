@@ -11,7 +11,7 @@ class Program extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = ['name', 'price', 'type', 'duration', 'track', 'run_dates',
-        'small_description', 'price_details', 'description', 'sub_category_id','image'];
+        'small_description', 'price_details', 'description', 'sub_category_id','image','is_featured','is_latest'];
 
     public function sub_category()
     {

@@ -48,7 +48,12 @@ class ProgramsController extends Controller
     public function store(ProgramRequest $request)
     {
         $image = $this->ImageUpload($request, 'image', 'images/programs');
-        $program = $this->model->create($image + $request->all());
+        // نضيف الـ is_featured و is_latest للـ request مع التحقق من الـ Checkbox
+        $requestData = $request->all();
+        $requestData['is_featured'] = $request->has('is_featured') ? true : false;
+        $requestData['is_latest'] = $request->has('is_latest') ? true : false; // إضافة is_latest
+        
+        $program = $this->model->create($image + $requestData);
         $program->Accommodation()->attach($request->accommodations);
         $program->Addon()->attach($request->addons);
         $program->Itinerary()->attach($request->itineraries);
@@ -63,7 +68,7 @@ class ProgramsController extends Controller
     public function show($id)
     {
         $program = $this->model->findOrfail($id);
-        $media = Media::where('type', 'program')->where('item_id', $id)->get();
+        $media = Media::where('program_id', $id)->get();
 
         return view('admin.programs.program_details', compact('program', 'media'));
     }
@@ -90,6 +95,10 @@ class ProgramsController extends Controller
             $image = $this->ImageUpload($request, 'image', 'images/programs');
             $requestArray = $image + $request->all();
         }
+        // نضيف الـ is_featured و is_latest للـ requestArray مع التحقق من الـ Checkbox
+        $requestArray['is_featured'] = $request->has('is_featured') ? true : false;
+        $requestArray['is_latest'] = $request->has('is_latest') ? true : false; // إضافة is_latest
+
         $program = $this->model->findOrfail($id);
         $program->update($requestArray);
         $program->Accommodation()->sync($request->accommodations);

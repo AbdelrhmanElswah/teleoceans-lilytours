@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class HomePageController extends Controller
 {
     public function index(){
-        $programs = Program::inRandomOrder()->limit(6)->get();
-        $news = Program::orderBy('id', 'DESC')->limit(4)->get();
+        $programs = Program::where('is_featured', true)->inRandomOrder()->limit(6)->get();
+        $news =Program::where('is_latest', true)->inRandomOrder()->limit(4)->get();
         $sliders = Slider::all();
-        $blogs = Blog::orderBy('created_at', 'DESC')->get();  // جلب جميع البلوجات
+        $blogs = Blog::orderBy('created_at', 'DESC')->get();  
 
         return view('Front.index', compact('programs', 'news', 'sliders', 'blogs'));
     }
