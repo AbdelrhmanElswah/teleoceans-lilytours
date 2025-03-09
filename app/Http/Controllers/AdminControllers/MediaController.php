@@ -16,7 +16,7 @@ class MediaController extends Controller
 
     public function __construct(Media $model)
     {
-        return $this->model = $model;
+        $this->model = $model; // تعديل بسيط للـ constructor
     }
 
     public function indexProgram()
@@ -31,33 +31,49 @@ class MediaController extends Controller
     {
         // Validation rules
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
-            'program_id' => 'required|exists:programs,id', // Validate program_id with custom attribute
-            'title' => 'required|string|max:255', // Validate title
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'program_id' => 'required|exists:programs,id',
+            'title' => 'required|string|max:255',
         ], [
-            // Custom error messages
             'program_id.required' => 'The program title is required.',
             'program_id.exists' => 'The selected program title does not exist.',
+            'images.required' => 'At least one image is required.',
         ], [
-            // Custom attribute names
             'program_id' => 'program title',
         ]);
 
-        // Process the image upload
-        $image = $this->ImageUpload($request, 'image', 'images/programs/media');
+        // Process the image uploads
+        $uploadedImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $filename = \Illuminate\Support\Str::random(40) . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/programs/media'), $filename);
+                $uploadedImages[] = $filename;
+            }
+        }
 
-        // Create the media record
-        $this->model->create($image + $request->all());
+        // Create media records for each uploaded image
+        foreach ($uploadedImages as $image) {
+            $this->model->create([
+                'title' => $request->title,
+                'image' => $image,
+                'program_id' => $request->program_id,
+            ]);
+        }
 
         return redirect()->route('media.program')->with('success', 'Media added successfully.');
     }
 
     public function destroy($id)
     {
-        $media = $this->model->findOrfail($id);
-        unlink(public_path('images/programs/media/'.$media->image));
+        $media = $this->model->findOrFail($id);
+        $filePath = public_path('images/programs/media/' . $media->image);
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
         $media->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Image deleted successfully.');
     }
 }

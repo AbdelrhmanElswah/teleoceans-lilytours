@@ -45,6 +45,6 @@ class SubscriberController extends Controller
         ]);
 
         // Redirect back with a success message
-        return redirect()->back()->with('success', 'Email subscribed successfully!');
+        return redirect()->back()->with('successs', 'Email subscribed successfully!');
     }
 }

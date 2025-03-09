@@ -9,9 +9,9 @@
                     <div class="footer-about text-lg-start text-center">
                         <div class="footer-widget">
                             <h4 class="footer-widget-title">Contact Us</h4>
-                            @if(session('success'))
+                            @if(session('successs'))
     <div class="alert alert-success">
-        {{ session('success') }}
+        {{ session('successs') }}
     </div>
 @endif
 

@@ -57,5 +57,7 @@ class Program extends Model
     {
         return $this->hasMany(Media::class, 'program_id');
     }
+    // في موديل Media
+
 
 }

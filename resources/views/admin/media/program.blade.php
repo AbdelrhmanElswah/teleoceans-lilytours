@@ -22,7 +22,6 @@
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="card-title">Add Media for Programs</h3>
-
                 </div>
                 <!-- /.card-header -->
                 <form action="{{route('media.program.store')}}" method="post" enctype="multipart/form-data">
@@ -39,9 +38,6 @@
                             </div>
                         @endif
                         <div class="row">
-
-                            <div class="dz-default"></div>
-
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Title</label>
@@ -61,33 +57,26 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label >Image</label>
-                                    <input class="imagee form-control" type="file" name="image" id="exampleInputFile">
+                                    <label>Images</label>
+                                    <input class="imagee form-control" type="file" name="images[]" id="exampleInputFile" multiple>
                                 </div>
-                                <div class="form-group">
-                                    <img src="" style="width: 100px" class="img-thumbnail image-preview">
+                                <div class="form-group image-preview">
+                                    <!-- الصور هتظهر هنا -->
                                 </div>
-
                             </div>
                         </div>
                         <!-- /.row -->
-
                     </div>
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Add</button>
                     </div>
-
                 </form>
-
-
             </div>
             <!-- /.card -->
         </div>
         <!-- /.container-fluid -->
     </section>
-
-
 
     <section class="content">
         <div class="container-fluid">
@@ -106,11 +95,10 @@
                                     </a>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <a   title="delete Image" data-toggle="modal" data-media_program_id="{{ $me->id }}"
-                                                 data-target="#media_program_delete" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a title="delete Image" data-toggle="modal" data-media_program_id="{{ $me->id }}"
+                                               data-target="#media_program_delete" href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
-
-                                        <strong>{{$me->program->name}}</strong>
+                                        <strong>{{ $me->program->name ?? 'غير مرتبط ببرنامج' }}</strong>
                                     </div>
                                 </div>
                                 @endforeach
@@ -124,17 +112,16 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header ">
+                    <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Delete Image</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <form method="post" id="media_program-action" action=" ">
+                    <form method="post" id="media_program-action" action="">
                         @csrf
                         {{method_field('delete')}}
-                        <div class="modal-body ">
-
+                        <div class="modal-body">
                             Are you sure about Delete?
                         </div>
                         <div class="modal-footer">
@@ -142,12 +129,25 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
     </section>
-
-
+    
+    <!-- JavaScript لعرض الـ Preview -->
+     
+    <script>
+        document.getElementById('exampleInputFile').addEventListener('change', function(e) {
+            const previewContainer = document.querySelector('.image-preview');
+            previewContainer.innerHTML = ''; // Clear previous previews
+            const files = e.target.files;
+            for (let file of files) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.width = '100px';
+                img.classList.add('img-thumbnail', 'm-2');
+                previewContainer.appendChild(img);
+            }
+        });
+    </script>
 @endsection

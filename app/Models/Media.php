@@ -11,8 +11,9 @@ class Media extends Model
 
     protected $fillable = ['title', 'image',  'program_id'];
 
-    public function program()
-    {
-        return $this->belongsTo(Program::class, 'program_id');
-    }
+    
+public function program()
+{
+    return $this->belongsTo(Program::class,'program_id');
+}
 }
