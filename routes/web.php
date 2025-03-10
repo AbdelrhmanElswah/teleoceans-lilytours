@@ -56,8 +56,8 @@ Route::post('/tailor-made/store', [\App\Http\Controllers\TailorMadeController::c
 
 
 
-//Route::get('/FAQ', [\App\Http\Controllers\HomePageController::class,'faqsPage'])->name('faq');
-Route::get('/blogs', [\App\Http\Controllers\HomePageController::class,'blog'])->name('blog');
+Route::get('/blogs/{id}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.details');
+Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->name('blogs');
 
 Route::get('/tailor-made', [\App\Http\Controllers\TailorMadeController::class,'index'])->name('tailor');
 

@@ -32,9 +32,18 @@ class BlogController extends Controller
 
     public function store(BlogRequest $request)
     {
+        // رفع الصورة
         $image = $this->ImageUpload($request, 'image', 'images/blogs');
-        $this->model->create($image + $request->all());
-
+    
+        // جلب جميع البيانات من الطلب
+        $data = $request->all();
+    
+        // تنظيف حقل الوصف من العلامات غير المرغوب فيها
+        $data['description'] = strip_tags($request->description, '<br><p><strong><em>');
+    
+        // دمج البيانات مع الصورة وحفظها
+        $this->model->create($image + $data);
+    
         return redirect()->route('blogs.index');
     }
 
