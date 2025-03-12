@@ -245,70 +245,105 @@
                                 <h4>Book This Tour</h4>
                                 </div>
                                 <div class="widget-body">
-    <form action="{{route('details.booking')}}" method="post" id="booking-form">
-        @csrf
-        @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                @foreach($errors->all() as $error)
-                    {{ $error }}<br/>
-                @endforeach
-            </div>
-        @endif
+                                <form action="{{route('details.booking')}}" method="post" id="booking-form">
+    @csrf
+    
 
-        @if (Session::has('success'))
-            <div class="alert alert-success">
-                <ul>
-                    <li>{!! Session::get('success') !!}</li>
-                </ul>
-            </div>
-        @endif
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
+    
+    <div class="booking-form-wrapper">
+        <div class="custom-input-group">
+        @error('name')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <input type="text" name="name" placeholder="Your Full Name" id="name" value="{{ old('name') }}">
+         
+        </div>
         
-        <div class="booking-form-wrapper">
-            <div class="custom-input-group">
-                <input type="text" name="name" placeholder="Your Full Name" id="name">
-            </div>
-            <div class="custom-input-group">
-                <input type="email" name="email" placeholder="Your Email" id="email">
-                <input type="hidden" name="program_id" value="{{$program->id}}">
-            </div>
-            <div class="custom-input-group">
-                <input type="tel" name="number" placeholder="Phone" id="phone">
-            </div>
-            <div class="custom-input-group">
-                <input type="text" name="promo_code" placeholder="Promo Code (if any)" id="promo_code">
-            </div>
-            <div class="custom-input-group">
-                <textarea cols="20" rows="3" name="addons" placeholder="Enter Add-ons "></textarea>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="custom-input-group">
-                        <input type="number" name="adult" placeholder="Adult" id="adult">
-                    </div>
+        <div class="custom-input-group">
+        @error('email')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <input type="email" name="email" placeholder="Your Email" id="email" value="{{ old('email') }}">
+           
+            <input type="hidden" name="program_id" value="{{$program->id}}">
+        </div>
+        
+        <div class="custom-input-group">
+        @error('number')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <input type="tel" name="number" placeholder="Phone" id="phone" value="{{ old('number') }}">
+           
+        </div>
+        
+        <div class="custom-input-group">
+        @error('promo_code')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <input type="text" name="promo_code" placeholder="Promo Code (if any)" id="promo_code" value="{{ old('promo_code') }}">
+           
+        </div>
+        
+        <div class="custom-input-group">
+        @error('addons')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <textarea cols="20" rows="3" name="addons" placeholder="Enter Optionals">{{ old('addons') }}</textarea>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="custom-input-group">
+                @error('adult')
+                        <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                    <input type="number" name="adult" placeholder="Adult" id="adult" value="{{ old('adult') }}">
+                  
                 </div>
-                <div class="col-sm-6">
-                    <div class="custom-input-group">
-                        <input type="number" name="child" placeholder="Child" id="child">
-                    </div>
-                </div>
             </div>
-            <div class="custom-input-group">
-                <i class="bi bi-calendar3"></i>
-                <input placeholder="Select your date" type="text" name="date" id="datepicker2" value="" class="calendar">
-            </div>
-            <div class="custom-input-group">
-                <textarea cols="20" rows="7" name="message" placeholder="Your message"></textarea>
-            </div>
-            <div class="custom-input-group">
-                <div class="submite-btn">
-                    <button type="submit">Book Now</button>
+            <div class="col-sm-6">
+                <div class="custom-input-group">
+                @error('child')
+                        <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                    <input type="number" name="child" placeholder="Child" id="child" value="{{ old('child') }}">
+                   
                 </div>
             </div>
         </div>
-    </form>
+        
+        <div class="custom-input-group">
+            <i class="bi bi-calendar3"></i>
+            @error('date')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <input placeholder="Select your date" type="text" name="date" id="datepicker2" value="{{ old('date') }}" class="calendar">
+            
+        </div>
+        
+        <div class="custom-input-group">
+        @error('message')
+                <span class="error-message" style="color: red; font-size: 0.9em; display: block; margin-top: 5px;">{{ $message }}</span>
+            @enderror
+            <textarea cols="20" rows="7" name="message" placeholder="Your message">{{ old('message') }}</textarea>
+          
+        </div>
+        
+        <div class="custom-input-group">
+            <div class="submite-btn">
+                <button type="submit">Book Now</button>
+            </div>
+        </div>
+    </div>
+</form>
 </div>
 
                 

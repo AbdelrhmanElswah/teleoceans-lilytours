@@ -33,7 +33,7 @@ class BookingRequest extends FormRequest
                 'date' => 'required|date',
                 'message' => 'nullable|string|min:6|max:200',
                 'promo_code' => 'nullable|string|max:20',
-                'addons' => 'required|string|min:1|max:200',
+                'addons' => 'nullable|string|min:1|max:200',
             ];
         
         
