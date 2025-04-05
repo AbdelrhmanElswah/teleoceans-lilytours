@@ -32,6 +32,7 @@ class PackageController extends Controller
 
     public function storeBooking(BookingRequest $request)
     {
+        // التحقق من صحة كود الخصم إذا كان موجوداً
         if ($request->promo_code) {
             $promoExists = DB::table('promo_referrals')
                             ->where('code', $request->promo_code)
@@ -42,10 +43,18 @@ class PackageController extends Controller
             }
         }
     
-        // Create the booking
-        $booking = Booking::create($request->all());
+        // إعداد بيانات الحجز مع معالجة حقل addons
+        $bookingData = $request->validated();
+        
+        // تعيين قيمة افتراضية إذا كان addons فارغاً
+        if (!isset($bookingData['addons']) || is_null($bookingData['addons'])) {
+            $bookingData['addons'] = '';
+        }
     
-        // Send email to admin
+        // إنشاء الحجز
+        $booking = Booking::create($bookingData);
+    
+        // إرسال البريد الإلكتروني للإدارة
         Mail::to('Info@lillytour.com')->send(new BookingNotification($booking));
     
         return redirect()->back()->with('success', 'Your booking has been submitted successfully! We will contact you soon.');

@@ -11,9 +11,9 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 d-flex justify-content-md-end justify-content-center align-items-center">
                 <ul class="topbar-social-links">
-                    <li><a href="{{isset($contact->facebook) ? $contact->facebook : ''}}"><i class='bx bxl-facebook'></i></a></li>
-                    <li><a href="{{isset($contact->instagram) ? $contact->instagram : ''}}"><i class='bx bxl-instagram-alt'></i></a></li>
-                    <li><a href="{{isset($contact->twitter) ? $contact->twitter : ''}}"><i class='bx bxl-twitter'></i></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100088834734536&sk=about" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                    <li><a href="https://www.instagram.com/lillytours.egypt/profilecard/?igsh=MTJ1ejVoMG9xYmJ5" target="_blank"><i class='bx bxl-instagram-alt'></i></a></li>
+                    <li><a href="https://x.com/LillyTour" target="_blank"><i class='bx bxl-twitter'></i></a></li>
                 </ul>
             </div>
         </div>

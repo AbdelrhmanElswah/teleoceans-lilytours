@@ -25,6 +25,7 @@ class BookingRequest extends FormRequest
         public function rules()
         {
             return [
+                'program_id' => 'required|exists:programs,id',
                 'name' => 'required|min:4|max:50|string',
                 'email' => 'required|email|min:6|max:120',
                 'number' => 'required|min:6|max:20',
